@@ -23,7 +23,7 @@ Given the scarcity and cost of high-field MRI, the synthesis of high-field MRI f
 Clone the repository:
 ```bash
 git clone https://github.com/Zhenxuan-Zhang/PTA4Unpaired_HF_MRI_SYN.git
-```
+
 
 Install the required packages:
 ```bash
@@ -31,7 +31,10 @@ pip install -r requirements.txt
 ```
 
 ---
+## Dataset&Preparation
+Run the code ```bash preprocessing_images.py ``` to process images in the proper format for PTA_hybrid and getting the masks.
 
+---
 ## Usage
 
 ---
