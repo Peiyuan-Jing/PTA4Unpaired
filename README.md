@@ -52,7 +52,7 @@ Notable arguments include:
 - **net_G**: Which generator you want to use.
 - **preprocess**: Which preprocess method want to apply.
 - **dataset_mode**: For hybrid model, unaligned mask; for others unaligned.
-
+More details on data preparation can be found in the [dataset documentation](dataset/README.md).
 ---
 
 ## Model Architecture
