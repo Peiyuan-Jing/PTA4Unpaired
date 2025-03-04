@@ -18,12 +18,12 @@ import sys, os
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 
-from models.unest_blocks import UnestBasicBlock, UnestPrUpBlock, UnestUpBlock, UnestAttUpBlock,  UnetOutBlock
+from models.PTA_blocks import PTABasicBlock, PTAPrUpBlock, PTAUpBlock, PTAAttUpBlock,  UnetOutBlock
 from monai.networks.blocks import Upsample
 from monai.networks.blocks.dynunet_block import get_conv_layer, get_padding
 
 
-from models.unest_blocks import ViT
+from models.PTA_blocks import ViT
 import torch
 from monai.utils import ensure_tuple_rep
         
