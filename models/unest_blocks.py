@@ -185,7 +185,7 @@ class ViT(nn.Module):
         )
         self.hybrid = hybrid
         if self.hybrid:
-            block = StructuredTransformerBlock
+            block = PTATransformerBlock
         else:
             block = TransformerBlock
         self.blocks = nn.ModuleList(
@@ -263,7 +263,7 @@ class ViT(nn.Module):
         return x, hidden_states_out
 
 
-class StructuredTransformerBlock(nn.Module):
+class PTATransformerBlock(nn.Module):
     """
     A transformer block, based on: "Dosovitskiy et al.,
     An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale <https://arxiv.org/abs/2010.11929>"
@@ -533,7 +533,7 @@ class SABlock(nn.Module):
         
 
 
-class UnestUpBlock(nn.Module):
+class PTAUpBlock(nn.Module):
     """
     An upsampling module that can be used for UNETR: "Hatamizadeh et al.,
     UNETR: Transformers for 3D Medical Image Segmentation <https://arxiv.org/abs/2103.10504>"
@@ -593,7 +593,7 @@ class UnestUpBlock(nn.Module):
         out = self.conv_block(out)
         return out
 
-class UnestAttUpBlock(nn.Module):
+class PTAAttUpBlock(nn.Module):
     def __init__(
         self,
         spatial_dims: int,
@@ -688,7 +688,7 @@ def get_upsample_blk(spatial_dims, in_channels, out_channels, upsample_stride, u
             )
     return up
 
-class UnestPrUpBlock(nn.Module):
+class PTAPrUpBlock(nn.Module):
     """
     A projection upsampling module that can be used for UNETR: "Hatamizadeh et al.,
     UNETR: Transformers for 3D Medical Image Segmentation <https://arxiv.org/abs/2103.10504>"
@@ -794,7 +794,7 @@ class UnestPrUpBlock(nn.Module):
         return x
 
 
-class UnestBasicBlock(nn.Module):
+class PTABasicBlock(nn.Module):
     """
     A CNN module that can be used for UNETR, based on: "Hatamizadeh et al.,
     UNETR: Transformers for 3D Medical Image Segmentation <https://arxiv.org/abs/2103.10504>"
