@@ -20,6 +20,12 @@ Given the scarcity and cost of high-field MRI, the synthesis of high-field MRI f
 ---
 
 ## Installation
+Clone the repository:
+```bash
+git clone https://github.com/Zhenxuan-Zhang/PTA4Unpaired_HF_MRI_SYN.git
+Install the required packages:
+```bash
+pip install -r requirements.txt
 
 ---
 
