@@ -27,7 +27,7 @@ from models.PTA_blocks import ViT
 import torch
 from monai.utils import ensure_tuple_rep
         
-class UNEST(nn.Module):
+class PTA(nn.Module):
     """
     UNETR based on: "Hatamizadeh et al.,
     UNETR: Transformers for 3D Medical Image Segmentation <https://arxiv.org/abs/2103.10504>"
@@ -120,7 +120,7 @@ class UNEST(nn.Module):
             fth=fth,
             norm=vit_norm
         )
-        self.encoder1 = UnestBasicBlock(
+        self.encoder1 = PTABasicBlock(
             spatial_dims=spatial_dims,
             in_channels=in_channels,
             out_channels=feature_size,
@@ -129,7 +129,7 @@ class UNEST(nn.Module):
             norm_name=norm_name,
             res_block=res_block,
         )
-        self.encoder2 = UnestPrUpBlock(
+        self.encoder2 = PTAPrUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 2,
@@ -142,7 +142,7 @@ class UNEST(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.encoder3 = UnestPrUpBlock(
+        self.encoder3 = PTAPrUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 4,
@@ -155,7 +155,7 @@ class UNEST(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.encoder4 = UnestPrUpBlock(
+        self.encoder4 = PTAPrUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 8,
@@ -168,7 +168,7 @@ class UNEST(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.decoder5 = UnestUpBlock(
+        self.decoder5 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 8,
@@ -178,7 +178,7 @@ class UNEST(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.decoder4 = UnestUpBlock(
+        self.decoder4 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=feature_size * 8,
             out_channels=feature_size * 4,
@@ -188,7 +188,7 @@ class UNEST(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.decoder3 = UnestUpBlock(
+        self.decoder3 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=feature_size * 4,
             out_channels=feature_size * 2,
@@ -198,7 +198,7 @@ class UNEST(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.decoder2 = UnestUpBlock(
+        self.decoder2 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=feature_size * 2,
             out_channels=feature_size,
@@ -245,7 +245,7 @@ class UNEST(nn.Module):
         return self.out(out), pred_seg
 
 
-class UNEST_8(nn.Module):
+class PTA_8(nn.Module):
     """
     UNETR based on: "Hatamizadeh et al.,
     UNETR: Transformers for 3D Medical Image Segmentation <https://arxiv.org/abs/2103.10504>"
@@ -338,7 +338,7 @@ class UNEST_8(nn.Module):
             fth=fth,
             norm=vit_norm
         )
-        self.encoder1 = UnestBasicBlock(
+        self.encoder1 = PTABasicBlock(
             spatial_dims=spatial_dims,
             in_channels=in_channels,
             out_channels=feature_size,
@@ -347,7 +347,7 @@ class UNEST_8(nn.Module):
             norm_name=norm_name,
             res_block=res_block
         )
-        self.encoder2 = UnestPrUpBlock(
+        self.encoder2 = PTAPrUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 2,
@@ -360,7 +360,7 @@ class UNEST_8(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.encoder3 = UnestPrUpBlock(
+        self.encoder3 = PTAPrUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 4,
@@ -374,7 +374,7 @@ class UNEST_8(nn.Module):
             upsample=upsample
         )
 
-        self.decoder4 = UnestUpBlock(
+        self.decoder4 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=hidden_size,
             out_channels=feature_size * 4,
@@ -384,7 +384,7 @@ class UNEST_8(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.decoder3 = UnestUpBlock(
+        self.decoder3 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=feature_size * 4,
             out_channels=feature_size * 2,
@@ -394,7 +394,7 @@ class UNEST_8(nn.Module):
             res_block=res_block,
             upsample=upsample
         )
-        self.decoder2 = UnestUpBlock(
+        self.decoder2 = PTAUpBlock(
             spatial_dims=spatial_dims,
             in_channels=feature_size * 2,
             out_channels=feature_size,
@@ -449,6 +449,6 @@ if __name__ == '__main__':
     x = torch.rand(4, 1, 224, 160)
     # seg = torch.rand(4, 1, 224, 224)
     seg = None
-    model = UNEST(in_channels=1, out_channels=1, img_size=(224,160), num_layers=4, spatial_dims=2, fth=0.51)
+    model = PTA(in_channels=1, out_channels=1, img_size=(224,160), num_layers=4, spatial_dims=2, fth=0.51)
     out = model(x, seg=seg)
     print(out[0].shape)
