@@ -19,9 +19,6 @@ class TestOptions(BaseOptions):
         parser.add_argument('--num_test', type=int, default=0, help='how many test images to run')
         parser.add_argument('--half', action='store_true', default=False, help='first half data')
         parser.add_argument('--half_data', default=False,  action='store_true', help='Halve size the dataset')
-        # rewrite devalue values
         parser.set_defaults(model='test')
-        # To avoid cropping, the load_size should be the same as crop_size
-        # parser.set_defaults(load_size=parser.get_default('crop_size'))
         self.isTrain = False
         return parser
