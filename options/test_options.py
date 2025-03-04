@@ -19,13 +19,6 @@ class TestOptions(BaseOptions):
         parser.add_argument('--num_test', type=int, default=0, help='how many test images to run')
         parser.add_argument('--half', action='store_true', default=False, help='first half data')
         parser.add_argument('--half_data', default=False,  action='store_true', help='Halve size the dataset')
-
-        # transformer parameters
-        # parser.add_argument('--ngf_cytran', type=int, default=16, help='number of down')
-        # parser.add_argument('--n_downsampling', type=int, default=3, help='number of down')
-        # parser.add_argument('--depth', type=int, default=3, help='number of down')
-        # parser.add_argument('--heads', type=int, default=6, help='number of down')
-        # parser.add_argument('--dropout', type=float, default=0.05, help='number of down')
         # rewrite devalue values
         parser.set_defaults(model='test')
         # To avoid cropping, the load_size should be the same as crop_size
