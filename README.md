@@ -41,7 +41,9 @@ Similarly, you need to prepare two directories:'/path/to/data/testA' and '/path/
 ## Usage
 
 To train the model(hybrid-version):
-```bash python train.py --dataroot /media/NAS07/USER_PATH/zzx/npy --name test  --model pta_hybrid --display_id -1 --checkpoints_dir /media/NAS07/USER_PATH/peiyuan/repo_test --load_size=224 --n_epochs 100 --batch_size 16 --input_nc 1 --output_nc 1 --n_epochs_decay 40  --preprocess resize --save_epoch_freq=5 --netG=hybrid  --dataset_mode unaligned_mask --gpu_ids 1 ```
+```bash 
+python train.py --dataroot /media/NAS07/USER_PATH/zzx/npy --name test  --model pta_hybrid --display_id -1 --checkpoints_dir /media/NAS07/USER_PATH/peiyuan/repo_test --load_size=224 --n_epochs 100 --batch_size 16 --input_nc 1 --output_nc 1 --n_epochs_decay 40  --preprocess resize --save_epoch_freq=5 --netG=hybrid  --dataset_mode unaligned_mask --gpu_ids 1
+```
 
 ---
 
