@@ -44,6 +44,15 @@ To train the model(hybrid-version):
 ```bash 
 python train.py --dataroot /media/NAS07/USER_PATH/zzx/npy --name test  --model pta_hybrid --display_id -1 --checkpoints_dir /media/NAS07/USER_PATH/peiyuan/repo_test --load_size=224 --n_epochs 100 --batch_size 16 --input_nc 1 --output_nc 1 --n_epochs_decay 40  --preprocess resize --save_epoch_freq=5 --netG=hybrid  --dataset_mode unaligned_mask --gpu_ids 1
 ```
+### Notable arguments include:
+
+- **structured_shape_iter**: Directly use ground-truth segmentation instead of predicted segmentation in the first few iterations.
+- **lambda_seg**: Weight of segmentation loss.
+- **fth**: Threshold to determine whether a pixel is foreground or background.
+- **out_kernel**: The final kernel of the decoder to regress each pixel.
+- **vit_img_size**: Match the image resolution (modify when changing image resolution).
+- **upsample**: Specifies convolution techniques used to upsample image features in the decoder.
+- **window_size**: Window size for local attention, divisible by the height/width of images.
 
 ---
 
